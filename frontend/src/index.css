@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #f5f7fb;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Neumorphism soft card base */
+.neu-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+}
+
+.neu-card-sm {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff;
+}
+
+/* Glassmorphism variant */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Neumorphic button */
+.neu-btn {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 3px 3px 6px #d1d9e6, -3px -3px 6px #ffffff;
+  transition: all 0.15s ease;
+}
+
+.neu-btn:active {
+  box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+}
+
+/* Neumorphic input */
+.neu-input {
+  background: #f5f7fb;
+  border-radius: 12px;
+  box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+  border: none;
+  outline: none;
+  transition: all 0.15s ease;
+  width: 100%;
+  font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+.neu-input:focus {
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #ffffff;
+}
+
+/* Scrollbar - hide on mobile */
+@media (max-width: 640px) {
+  ::-webkit-scrollbar { display: none; }
+  body { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@media (min-width: 641px) {
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #c5cdd8; border-radius: 3px; }
+}
+
+/* Task completed strikethrough */
+.task-completed .task-title {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+/* Circular timer for Pomodoro */
+.timer-circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Priority badge pulse for PENTING */
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 0 5px rgba(239, 68, 68, 0); }
+}
+
+.priority-penting {
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+/* Safe area padding for notched phones */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
